@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;900&display=swap");
+.header__links a {
+  position: relative;
+  margin: 0 20px;
+}
+
+.header__links a:after {
+  content: '';
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  position: absolute;
+  left: 0;
+  bottom: -12px;
+  width: 0;
+  height: 1px;
+  background: white;
+}
+
+.header__links a.active:after, .header__links a:hover:after {
+  width: 100%;
+}
+
+.header__toggle i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 24px;
+  color: white;
+  width: 100%;
+  z-index: 100;
+}
+
+.sticky-nav {
+  padding-top: 0;
+  z-index: 100;
+  color: black;
+  background-color: #f9f9f9;
+}
+
+.sticky-nav li {
+  margin-top: -50px;
+}
+
+@media only screen and (max-width: 1023px) {
+  .sticky-nav li {
+    margin-top: 0px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .sticky-nav li {
+    margin-top: 0px;
+  }
+}
+
+.intro-section {
+  background-image: url("../images/intro-bg.jpg");
+}
+
+.intro__info {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 32px 40px 20px;
+}
+
+.experience__box1 {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 32px 40px 20px;
+}
+
+.testimonials {
+  height: 700px;
+}
+
+.footer__box-left {
+  width: 40%;
+  margin: 0 20px;
+}
+
+html {
+  font-family: 'Raleway', sans-serif;
+}
+
+.opacity-60 {
+  opacity: 0.6;
+}
+/*# sourceMappingURL=styles.css.map */
