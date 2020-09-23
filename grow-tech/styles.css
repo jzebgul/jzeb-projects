@@ -49,18 +49,43 @@
 }
 
 .sticky-nav {
-  padding-top: 0;
+  padding-top: 5px;
   z-index: 100;
   color: black;
-  background-color: #f9f9f9;
+  background-color: #f7dddd;
 }
 
 .sticky-nav li {
-  margin-top: -50px;
+  margin-top: -20px;
+  background-color: #f7dddd;
+}
+
+.sticky-nav a {
+  position: relative;
+  margin: 0 20px;
+}
+
+.sticky-nav a:after {
+  content: '';
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 0;
+  height: 2px;
+  background: black;
+}
+
+.sticky-nav a.active:after, .sticky-nav a:hover:after {
+  width: 100%;
 }
 
 @media only screen and (max-width: 1023px) {
-  .sticky-nav li {
+  .sticky-nav {
+    background-color: #f7dddd;
+  }
+  li {
     margin-top: 0px;
   }
 }
@@ -68,6 +93,7 @@
 @media only screen and (max-width: 767px) {
   .sticky-nav li {
     margin-top: 0px;
+    padding-top: 20px;
   }
 }
 

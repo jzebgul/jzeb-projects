@@ -3,6 +3,7 @@
         position: relative;
         margin: 0 20px;
         
+        
        
         &:after {
             content: '';
@@ -45,22 +46,58 @@
     width: 100%;
     z-index: 100;
 }
+
 .sticky-nav {
-    padding-top: 0;
+    padding-top: 5px;
     z-index: 100;
     color: black;
-    background-color: rgb(249, 249, 249);
+    background-color: rgb(247, 221, 221);
     li { 
-        margin-top:-50px;   
+    margin-top:-20px; 
+    background-color: rgb(247, 221, 221);
+
+}
+a {
+    position: relative;
+    margin: 0 20px;
+    
+    &:after {
+        content: '';
+        transition: all 0.25s ease-in-out;
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 0;
+        height: 2px;
+        background: black;
+    }
+    &.active,
+    &:hover {
+        &:after {
+            width: 100%;
+        }
+    }
 }
 }
+
 @media only screen and (max-width: 1023px){
-    .sticky-nav li { 
+    .sticky-nav{
+        background-color: rgb(247, 221, 221) ;
+    } li { 
         margin-top: 0px;   
 }
 }
 @media only screen and (max-width: 767px) {
     .sticky-nav li { 
-        margin-top: 0px;   
+        margin-top: 0px;  
+        padding-top: 20px; 
+        
 }
 }
+// @media only screen and (max-width: 460px) {
+//     .sticky-nav li { 
+//         margin-top: 20px;  
+//         padding-top: 50px; 
+        
+// }
+// }

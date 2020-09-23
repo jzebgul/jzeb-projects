@@ -5,7 +5,7 @@ $(document).ready(function(){
         $(this).addClass('active');
     });
 
-    $('.header__toggle').on('click', function(e){
+    $('.header__toggle').on('click', function(){
         $('.header__links').slideToggle(300);
     });
 
@@ -23,7 +23,7 @@ $(document).ready(function(){
       });
     //   ------------- Sticky Nav-------------------------
       $('section').waypoint(function(direction){
-       
+        
         if (direction == "down"){
  $('header').addClass('sticky-nav');
         } else {
@@ -32,7 +32,11 @@ $(document).ready(function(){
       },{
      offset: '100px;'
  });      
-
+ $('.sticky-nav a').on('click', function(e){
+  e.preventDefault();
+  $('.sticky-nav a').removeClass('active');
+  $(this).addClass('active');
+});
 
 // -------------Smooth Scrolling__________________________
 // Select all links with hashes
