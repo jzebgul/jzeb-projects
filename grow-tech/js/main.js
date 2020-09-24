@@ -22,16 +22,26 @@ $(document).ready(function(){
         }
       });
     //   ------------- Sticky Nav-------------------------
-      $('section').waypoint(function(direction){
+    var stickyOffset = $('header').offset().top;
+
+$(window).scroll(function(){
+  var sticky = $('header'),
+      scroll = $(window).scrollTop()>=400;
+
+  if (scroll > stickyOffset) sticky.addClass('sticky-nav');
+  else sticky.removeClass('sticky-nav');
+});
+
+//       $('section').waypoint(function(direction){
         
-        if (direction == "down"){
- $('header').addClass('sticky-nav');
-        } else {
-         $('header').removeClass('sticky-nav');
-        }
-      },{
-     offset: '100px;'
- });      
+//         if (direction == "down"){
+//  $('header').addClass('sticky-nav');
+//         } else {
+//          $('header').removeClass('sticky-nav');
+//         }
+//       },{
+//      offset: '100px;'
+//  });      
  $('.sticky-nav a').on('click', function(e){
   e.preventDefault();
   $('.sticky-nav a').removeClass('active');
