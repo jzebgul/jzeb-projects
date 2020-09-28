@@ -49,14 +49,12 @@
 }
 
 .sticky-nav {
-  padding-top: 5px;
   z-index: 100;
   color: black;
   background-color: #f7dddd;
 }
 
 .sticky-nav li {
-  margin-top: -20px;
   background-color: #f7dddd;
 }
 
@@ -83,7 +81,7 @@
 
 @media only screen and (max-width: 1023px) {
   .sticky-nav {
-    background-color: #f7dddd;
+    background-color: rgba(245, 247, 247, 0.817);
   }
   li {
     margin-top: 0px;
@@ -92,8 +90,8 @@
 
 @media only screen and (max-width: 767px) {
   .sticky-nav li {
-    margin-top: 0px;
-    padding-top: 20px;
+    margin: 0 20px;
+    padding-top: 30px;
   }
 }
 
