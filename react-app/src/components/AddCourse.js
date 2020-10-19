@@ -1,17 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Container } from 'reactstrap';
+import database from '../services/fire';
+import { useSelector, useDispatch } from 'react-redux';
+import '../App.css';
+
 const AddCourse=()=>{
+    const [course, setCourse] = useState('');
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.auth.user);
+
     useEffect(()=>{
         document.title= "Add Courses"
     },[])
+
+    const addCourse = () => {
+        const payload = { user:user,  text: course}
+        const dbcoursesWrapper = database.ref().child(user).child('courses');
+        return dbcoursesWrapper.child(payload.user).update(payload).then(() => {
+            setCourse('');
+            dispatch({ type: "ADD_COURSES", payload })
+       })
+     }
     return(
 <div>
     <h1 className="text-center my-3">Fill Course Detail</h1>
-    <Form>
+    <Form onSubmit={e => {
+        e.preventDefault(e.target.value);
+        addCourse();
+    } }>
 <FormGroup>
 <label for="UserId">Course Id</label>
 <Input
 type="text"
+onChange={e => setCourse(e.target.value)}
 placeholder="Enter your Id"
 name="userId"
 id="UserId"
