@@ -14,7 +14,7 @@ const AddCourse=()=>{
     },[])
 
     const addCourse = () => {
-        const payload = { user:user,  text: course}
+        const payload = { courseId:courseId, title:title, text:course, description:description}
         const dbcoursesWrapper = database.ref().child(user).child('courses');
         return dbcoursesWrapper.child(payload.user).update(payload).then(() => {
             setCourse('');
@@ -32,6 +32,7 @@ const AddCourse=()=>{
 <label for="UserId">Course Id</label>
 <Input
 type="text"
+value={CourseId}
 onChange={e => setCourse(e.target.value)}
 placeholder="Enter your Id"
 name="userId"
@@ -43,6 +44,8 @@ id="UserId"
 <label for="title">Course Title</label>
 <Input
 type="text"
+value={title}
+onChange={e => setCourse(e.target.value)}
 placeholder="Enter Course Title"
 name="title"
 id="title"
@@ -51,6 +54,8 @@ id="title"
 
 <label for="description">Course Description</label>
 <Input
+value={description}
+onChange={e => setCourse(e.target.value)}
 type="textarea"
 placeholder="Enter Course Description"
 name="description"

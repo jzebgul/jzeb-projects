@@ -5,7 +5,7 @@ const iState = {}
 const courses = (state = iState, action) => {
     switch (action.type) {
         case 'ADD_COURSES':
-            return { ...state, [action.payload.user]: action.payload }
+            return { ...state, [action.payload]: action.payload }
 
 
     //     case 'COMPLETE_TASK':
