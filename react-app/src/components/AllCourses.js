@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Course from './Course';
+import AddCourse from './AddCourse';
+
+
 const AllCourses=()=>{
     useEffect(()=>{
         document.title= "All Courses"
