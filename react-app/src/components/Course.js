@@ -9,13 +9,13 @@ const Course = ({course}) => {
         <div>
           <Card>
             <CardBody className="text-center ">
-              <CardTitle className="font-weight-bold text-center"><h1>{course.title}</h1></CardTitle>
-              <CardText className="text-center">{course.description}.</CardText>
+              <CardTitle className="font-weight-bold text-center"><h1>{course.courseTitle}</h1></CardTitle>
+              <CardText className="text-center">{course.courseDesc}.</CardText>
               <Container className="text-center">
               <Button color="warning">Update</Button>
               <Button color="danger ml-4">Delete</Button>
               </Container>
-              
+
             </CardBody>
           </Card>
         </div>

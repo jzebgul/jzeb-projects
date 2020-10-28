@@ -21,16 +21,14 @@ export const history = createHistory();
 
 const AppRouter = () => (
   <Router history={history}>
-    
-           
-                <Switch>
-                   <PublicRoute path="/" component={Login} exact={true} />
-                   <PrivateRoute path="/App" component={App} />
-                   {/* <PrivateRoute path="/add-courses" component={AddCourse}  />
-                   <PrivateRoute path="/view-courses" component={AllCourses}  /> */}
-                   <Route component={NotFoundPage} />
-                   </Switch>
-               
+    <Switch>
+      <PublicRoute path="/" component={Login} exact={true} />
+      <PrivateRoute path="/App" component={App} />
+      <PrivateRoute path="/add-courses" component={AddCourse}  />
+      <PrivateRoute path="/view-courses" component={AllCourses}  />
+      <Route component={NotFoundPage} />
+    </Switch>
+
   </Router>
 );
 

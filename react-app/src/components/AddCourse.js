@@ -5,83 +5,77 @@ import { useSelector, useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
 import '../App.css';
 
-const AddCourse=()=>{
-    
+const AddCourse = () => {
+
     const [courseId, setCourseId] = useState('');
     const [courseTitle, setCourseTitle] = useState('');
     const [courseDesc, setCourseDesc] = useState('');
     const dispatch = useDispatch();
     const user = useSelector(state => state.auth.user.uid);
 
-    useEffect(()=>{
-        document.title= "Add Courses"
-    },[])
+    useEffect(() => {
+        document.title = "Add Courses"
+    }, [])
 
-    const addCourse =  () => {
-        const payload = {id: uuid(), courseId:courseId, courseTitle:courseTitle,  courseDesc:courseDesc}
+    const addCourse = () => {
+        const payload = { id: uuid(), courseId: courseId, courseTitle: courseTitle, courseDesc: courseDesc }
         const dbcoursesWrapper = database.ref().child(user).child('courses');
-      // const dbcoursesWrapper = database.ref(`users/${user}/courses`).push(courseId, courseTitle, setCourseDesc);
+        // const dbcoursesWrapper = database.ref(`users/${user}/courses`).push(courseId, courseTitle, setCourseDesc);
         return dbcoursesWrapper.child(payload.id).update(payload).then(() => {
-        setCourseId('');
-        setCourseTitle('');
-        setCourseDesc('');
-        dispatch({ type: "ADD_COURSES", payload });
-            
-        
+            setCourseId('');
+            setCourseTitle('');
+            setCourseDesc('');
+            dispatch({ type: "ADD_COURSES", payload });
         })
     }
-   
-    return(
-<div>
-    <h1 className="text-center my-3">Fill Course Detail</h1>
-    <Form onSubmit={e => {
-        e.preventDefault(e.target.value);
-        addCourse();
-    } }>
-<FormGroup>
-<label for="UserId">Course Id</label>
-<Input
-type="text"
-value={courseId}
-onChange={e => setCourseId(e.target.value)}
-placeholder="Enter your Id"
-name="userId"
-id="UserId"
-/>
-</FormGroup>
 
-<FormGroup>
-<label for="title">Course Title</label>
-<Input
-type="text"
-value={courseTitle}
-onChange={e => setCourseTitle(e.target.value)}
-placeholder="Enter Course Title"
-name="title"
-id="title"
-/>
-</FormGroup>
+    return (
+        <div>
+            <h1 className="text-center my-3">Fill Course Detail</h1>
+            <Form onSubmit={e => {
+                e.preventDefault(e.target.value);
+                addCourse();
+            }}>
+                <FormGroup>
+                    <label for="UserId">Course Id</label>
+                    <Input
+                        type="text"
+                        value={courseId}
+                        onChange={e => setCourseId(e.target.value)}
+                        placeholder="Enter your Id"
+                        name="userId"
+                        id="UserId"
+                    />
+                </FormGroup>
 
-<label for="description">Course Description</label>
-<Input
-value={courseDesc}
-onChange={e => setCourseDesc(e.target.value)}
-type="textarea"
-placeholder="Enter Course Description"
-name="description"
-id="description"
-style={{ height: 150}}
-/>
-<Container className="text-center">
-<Button color="success" type='submit'>Add Course</Button>
-<Button color="warning ml-3">clear</Button>
-</Container>
-    </Form>
-</div>
+                <FormGroup>
+                    <label for="title">Course Title</label>
+                    <Input
+                        type="text"
+                        value={courseTitle}
+                        onChange={e => setCourseTitle(e.target.value)}
+                        placeholder="Enter Course Title"
+                        name="title"
+                        id="title"
+                    />
+                </FormGroup>
 
-  
-
+                <label for="description">Course Description</label>
+                <Input
+                    value={courseDesc}
+                    onChange={e => setCourseDesc(e.target.value)}
+                    type="textarea"
+                    placeholder="Enter Course Description"
+                    name="description"
+                    id="description"
+                    style={{ height: 150 }}
+                />
+                <Container className="text-center">
+                    <Button color="success" type='submit'>Add Course</Button>
+                    <Button color="warning ml-3">clear</Button>
+                </Container>
+            </Form>
+        </div>
     );
-   
 };
 export default AddCourse;
