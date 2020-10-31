@@ -4,6 +4,10 @@ const FETCH_COURSES = 'FETCH_COURSES';
 
 export const addCourse = newCourse => async dispatch => {
   coursesRef.push().set(newCourse);
+  
+};
+export const removeCourse = removeCourse => async dispatch => {
+  coursesRef.child(removeCourse).remove();
 };
 
 export const fetchCourse = () => async dispatch => {

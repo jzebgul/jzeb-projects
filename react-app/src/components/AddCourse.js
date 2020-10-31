@@ -18,7 +18,7 @@ const AddCourse = () => {
     }, [])
 
     const addCourse = () => {
-        const payload = { id: uuid(), courseId: courseId, courseTitle: courseTitle, courseDesc: courseDesc }
+        const payload = { id: uuid(), courseId:courseId, courseTitle: courseTitle, courseDesc: courseDesc }
         const dbcoursesWrapper = database.ref().child(user).child('courses');
         // const dbcoursesWrapper = database.ref(`users/${user}/courses`).push(courseId, courseTitle, setCourseDesc);
         return dbcoursesWrapper.child(payload.id).update(payload).then(() => {
@@ -32,7 +32,7 @@ const AddCourse = () => {
     return (
         <div>
             <h1 className="text-center my-3">Fill Course Detail</h1>
-            <Form onSubmit={e => {
+            <Form onSubmit={(e) => {
                 e.preventDefault(e.target.value);
                 addCourse();
             }}>
@@ -41,7 +41,7 @@ const AddCourse = () => {
                     <Input
                         type="text"
                         value={courseId}
-                        onChange={e => setCourseId(e.target.value)}
+                        onChange={(e) => setCourseId(e.target.value)}
                         placeholder="Enter your Id"
                         name="userId"
                         id="UserId"
@@ -53,7 +53,7 @@ const AddCourse = () => {
                     <Input
                         type="text"
                         value={courseTitle}
-                        onChange={e => setCourseTitle(e.target.value)}
+                        onChange={(e)=> setCourseTitle(e.target.value)}
                         placeholder="Enter Course Title"
                         name="title"
                         id="title"
@@ -63,7 +63,7 @@ const AddCourse = () => {
                 <label for="description">Course Description</label>
                 <Input
                     value={courseDesc}
-                    onChange={e => setCourseDesc(e.target.value)}
+                    onChange={(e) => setCourseDesc(e.target.value)}
                     type="textarea"
                     placeholder="Enter Course Description"
                     name="description"

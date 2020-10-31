@@ -1,5 +1,5 @@
 //TASK REDUCER
-// import { omit } from 'lodash'
+import { omit } from 'lodash'
 
 const initialState = {
 }
@@ -12,8 +12,8 @@ const courses = (state = initialState, action) => {
         //     case 'COMPLETE_TASK':
         //         return { ...state, [action.payload.id]: action.payload }
 
-        //     case 'REMOVE_TASK':
-        //         return omit(state, action.id)
+            case 'DELETE-COURSE':
+                return omit(state, action.id)
 
         //     // return {...state, items: omit(state, action.id)}
         //     case 'SET_TASKS':
