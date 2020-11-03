@@ -5,6 +5,7 @@ import {
 } from 'reactstrap';
 import database from '../services/fire';
 import { useSelector, useDispatch } from 'react-redux';
+import { fetchCourse } from '../actions/courses';
 
 
 
@@ -16,7 +17,7 @@ const dispatch = useDispatch();
     const dbtasksWrapper = database.ref().child(user).child('courses');
     dbtasksWrapper.child(id).remove().then(() => {
         dispatch({ type: 'DELETE_COURSE', id: id })
-        console.log('deleted');
+        dispatch(fetchCourse(user));
     })
   }
     return (
