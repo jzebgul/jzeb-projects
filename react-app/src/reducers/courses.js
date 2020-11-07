@@ -18,9 +18,8 @@ const courses = (state = initialState, action) => {
         case 'FETCH_COURSES':
             return action.courses
 
-        //     // return {...state, items: omit(state, action.id)}
-        //     case 'SET_TASKS':
-        //         return action.tasks;
+            case 'UPDATE_COURSE':
+                return action.courses;
 
         default:
             return state
