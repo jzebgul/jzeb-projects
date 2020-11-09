@@ -42,8 +42,8 @@ const Course = (props) => {
     <div>
       {isUpdating ? (
        // {/* pass the course down and a callback to close update component  */}
-        <AddCourse 
-          course = {course} 
+        <AddCourse
+          course = {course}
           update = {isUpdating}
           finishUpdate={() => setIsUpdating(false)}
         />

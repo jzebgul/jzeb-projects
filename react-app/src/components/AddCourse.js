@@ -7,7 +7,8 @@ import '../App.css';
 import { fetchCourse } from '../actions/courses';
 
 
-const AddCourse = () => {
+const AddCourse = (props) => {
+    const [update, setUpdate] = useState(props);
     const [courseId, setCourseId] = useState('');
     const [courseTitle, setCourseTitle] = useState('');
     const [courseDesc, setCourseDesc] = useState('');
@@ -31,9 +32,9 @@ const AddCourse = () => {
 
         })
     }
-    
+
     const updateCourse = (course) => {
-        
+
         const payload = { id: uuid, courseId:courseId, courseTitle: courseTitle, courseDesc: courseDesc }
         const dbcoursesWrapper = database.ref().child(user).child('courses');
         // const dbcoursesWrapper = database.ref(`users/${user}/courses`).push(courseId, courseTitle, setCourseDesc);
@@ -44,7 +45,7 @@ const AddCourse = () => {
             dispatch({ type: "UPDATE_COURSE", payload});
         })
     }
-    
+
     return (
         <div>
             <h1 className="text-center my-3">Fill Course Detail</h1>
@@ -87,7 +88,7 @@ const AddCourse = () => {
                     style={{ height: 150 }}
                 />
                 <Container className="text-center">
-                    {update? <Button color="success" type='button' onClick={addCourse()}>Add Course</Button> : <Button color="success" onClick={updateCourse()} type='button'>Update Course</Button>}
+                    { update ? <Button color="success" type='button' onClick={addCourse()}>Add Course</Button> : <Button color="success" onClick={updateCourse()} type='button'>Update Course</Button>}
                     {/* <Button color="success" type='submit'>Add Course</Button> */}
                     <Button color="warning ml-3">clear</Button>
                 </Container>

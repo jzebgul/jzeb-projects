@@ -6,6 +6,7 @@ import configureStore from './store/configureStore';
 import { login, logout } from './actions/auth';
 import { firebase } from './services/fire';
 import LoadingPage from './components/LoadingPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = configureStore();
 const jsx = (
