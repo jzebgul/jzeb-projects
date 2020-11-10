@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Course from './Course';
+import CourseItem from './CourseItem';
 import { useSelector, useDispatch } from 'react-redux';
 import AddCourse from './AddCourse';
 import database from '../services/fire';
@@ -12,10 +12,12 @@ const AllCourses = () => {
     const coursesArray = Object.values(courses);
     const user = useSelector(state => state.auth.user.uid);
 
+    console.log(coursesArray);
 
-    useEffect(()=>{
+
+    useEffect(() => {
         dispatch(fetchCourse(user));
-    },[])
+    }, [])
 
 
     return (
@@ -25,8 +27,8 @@ const AllCourses = () => {
 
             {coursesArray.length}
 
-            { coursesArray.length > 0 ? coursesArray.map((item) =>
-                <Course course={item} />) : "No Courses"
+            {coursesArray.length > 0 ? coursesArray.map((course) =>
+                <CourseItem course={course} />) : "No Courses"
             }
         </div>
     )

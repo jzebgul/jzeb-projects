@@ -10,60 +10,52 @@ import { fetchCourse } from '../actions/courses';
 import AddCourse from './AddCourse';
 
 
-
-const Course = (props) => {
+const CourseItem = (props) => {
+  const [updating, setUpdating] = useState(false);
   const user = useSelector((state) => state.auth.user.uid);
-  const [course, setCourse] = useState({});
   const dispatch = useDispatch();
 
   const removeCourse = (id) => {
-    console.log(id);
     const dbtasksWrapper = database.ref().child(user).child('courses');
+
     dbtasksWrapper
       .child(id)
       .remove()
       .then(() => {
-        dispatch({ type: 'DELETE_COURSE', id });
         dispatch(fetchCourse(user));
       });
   };
 
-  const updateCourse = (course) => {
-    setIsUpdating(true);
-    setCourse(course);
+  const updateCourse = () => {
+    setUpdating(true);
   };
-
-  // state to switch between updating the course and viewing the course
-  const [isUpdating, setIsUpdating] = useState(false);
 
 
 
   return (
     <div>
-      {isUpdating ? (
+      {updating ? (
        // {/* pass the course down and a callback to close update component  */}
         <AddCourse
-          course = {course}
-          update = {isUpdating}
-          finishUpdate={() => setIsUpdating(false)}
+          currentCourse={props.course}
         />
 
       ) : (
         <Card>
           <CardBody className="text-center ">
             <CardText className="text-center">
-              <h2>CourseID: {course.courseId}</h2>
+              <h2>CourseID: {props.course.courseId}</h2>
             </CardText>
             <CardTitle className="font-weight-bold text-center">
-              <h1>{course.courseTitle}</h1>
+              <h1>{props.course.courseTitle}</h1>
             </CardTitle>
-            <CardText className="text-center">{course.courseDesc}.</CardText>
+            <CardText className="text-center">{props.course.courseDesc}.</CardText>
             <Container className="text-center">
               {/* Set isUpdating to true */}
-              <Button color="warning"  onClick={() => updateCourse(course)}>
+              <Button color="warning" onClick={() => updateCourse()}>
                 Update
               </Button>
-              <Button color="danger ml-4" onClick={() => removeCourse(course.id)}>
+              <Button color="danger ml-4" onClick={() => removeCourse(props.course.id)}>
                 Delete
               </Button>
             </Container>
@@ -73,4 +65,4 @@ const Course = (props) => {
     </div>
   );
 };
-export default Course;
+export default CourseItem;
